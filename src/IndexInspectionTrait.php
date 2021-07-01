@@ -8,9 +8,6 @@ trait IndexInspectionTrait
 {
     public function h3GetResolution(string $H3Index): int
     {
-        if (php_sapi_name() !== 'cli') {
-            return (new \H3())->h3GetResolution($H3Index);
-        }
 
         $ffi = FFI::cdef(self::H3IndexTypeDef.'int h3GetResolution(H3Index h);', $this->lib);
 
@@ -19,9 +16,6 @@ trait IndexInspectionTrait
 
     public function h3IsValid(string $H3Index): bool
     {
-        if (php_sapi_name() !== 'cli') {
-            return (new \H3())->h3IsValid($H3Index);
-        }
 
         $ffi = FFI::cdef(self::H3IndexTypeDef.'int h3IsValid(H3Index h);', $this->lib);
 
